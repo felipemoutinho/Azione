@@ -1,26 +1,26 @@
 import { Injectable } from '@nestjs/common';
 import { noExtendLeft } from 'sequelize/types/lib/operators';
-import { PessoaModel } from './pessoa.model';
+import { Pessoa } from './pessoa.model';
 
 
 @Injectable()
 export class PessoaService {
-    Pessoas: PessoaModel[] = [
+    Pessoas: Pessoa[] = [
         {idpessoa: 1,nome: "Pessoa 1", ativa: true},
         {idpessoa: 2,nome: "Pessoa 2", ativa: true},
         {idpessoa: 3,nome: "Pessoa 3", ativa: true},
         {idpessoa: 4,nome: "Pessoa 4", ativa: false}
     ];
 
-    getAll(): PessoaModel[]{
+    getAll(): Pessoa[]{
         return this.Pessoas;
     }
 
-    getById(id: number): PessoaModel{
+    getById(id: number): Pessoa{
         return this.Pessoas.find((p) => p.idpessoa == id);
     }
 
-    getAllActive(): PessoaModel[]{
+    getAllActive(): Pessoa[]{
         return this.Pessoas.filter(p => p.ativa === true);
     }
 
@@ -40,7 +40,7 @@ export class PessoaService {
         });
     }
 
-    update(pessoa:PessoaModel){
+    update(pessoa:Pessoa){
         let varPessoa = this.getById(pessoa.idpessoa);
 
         if(varPessoa){
