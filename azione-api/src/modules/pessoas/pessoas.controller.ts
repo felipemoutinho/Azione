@@ -1,5 +1,6 @@
 import { Body, Controller, Delete, Get, Param, Patch, Post } from '@nestjs/common';
 import { Pessoa } from './pessoa.model';
+import {PessoaEntity} from './pessoa.entity';
 import { PessoaService } from './pessoa.service';
 
 @Controller('pessoas')
@@ -10,32 +11,32 @@ export class PessoasController {
     }
 
     @Get()
-    RetornaPessoas():Pessoa[]{
+    async RetornaPessoas():Promise<Pessoa[]>{
         return this.pessoaService.getAll();
     }
 
     @Get('ativas')
-    RetornaPessoasAtivas(): Pessoa[]{
+    async RetornaPessoasAtivas(): Promise<Pessoa[]>{
         return this.pessoaService.getAllActive();
     }
 
     @Get(':id')
-    getById(@Param('id') id:number):Pessoa{
+    async getById(@Param('id') id:number):Promise<Pessoa>{
         return this.pessoaService.getById(id);
     }
 
     @Post()
-    create(@Body() pessoa:Pessoa) {
-        this.pessoaService.create(pessoa.nome,pessoa.ativa);
+    async create(@Body() pessoa:Pessoa) {
+        this.pessoaService.create(pessoa);
     }
 
     @Patch()
-    update(@Body() pessoa:Pessoa){
+    async update(@Body() pessoa:Pessoa){
         this.pessoaService.update(pessoa);
     }
 
     @Delete(':id')
-    delete(@Param('id') id:number){
+    async delete(@Param('id') id:number){
         this.pessoaService.delete(id);
     }
 

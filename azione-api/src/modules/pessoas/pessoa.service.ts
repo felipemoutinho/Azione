@@ -1,58 +1,49 @@
 import { Injectable } from '@nestjs/common';
-import { noExtendLeft } from 'sequelize/types/lib/operators';
 import { Pessoa } from './pessoa.model';
+import { PessoaEntity } from './pessoa.entity';
+import { InjectModel } from '@nestjs/sequelize';
 
 
 @Injectable()
 export class PessoaService {
-    Pessoas: Pessoa[] = [
-        {idpessoa: 1,nome: "Pessoa 1", ativa: true},
-        {idpessoa: 2,nome: "Pessoa 2", ativa: true},
-        {idpessoa: 3,nome: "Pessoa 3", ativa: true},
-        {idpessoa: 4,nome: "Pessoa 4", ativa: false}
-    ];
+    
+    constructor(@InjectModel(PessoaEntity) private pessoaModel: typeof PessoaEntity){
 
-    getAll(): Pessoa[]{
-        return this.Pessoas;
+    }
+    
+    async getAll(): Promise<Pessoa[]>{
+        return this.pessoaModel.findAll();
     }
 
-    getById(id: number): Pessoa{
-        return this.Pessoas.find((p) => p.idpessoa == id);
+    async getById(id: number): Promise<Pessoa>{
+        return this.pessoaModel.findByPk(id);
     }
 
-    getAllActive(): Pessoa[]{
-        return this.Pessoas.filter(p => p.ativa === true);
-    }
-
-    create(nome: string, ativa: boolean){
-        let lastIdpessoa = 0;
-        let qtdPessoas = this.Pessoas.length;
-
-        if(qtdPessoas > 0)
-            lastIdpessoa = this.Pessoas[qtdPessoas - 1].idpessoa;
-
-        let proximoIdpessoa = lastIdpessoa + 1;
-
-        this.Pessoas.push({
-            idpessoa: proximoIdpessoa,
-            nome: nome,
-            ativa: ativa
+    async getAllActive(): Promise<Pessoa[]>{
+        return this.pessoaModel.findAll({
+            where:{
+                ativa: true
+            }
         });
     }
 
-    update(pessoa:Pessoa){
-        let varPessoa = this.getById(pessoa.idpessoa);
-
-        if(varPessoa){
-            varPessoa.nome = pessoa.nome;
-            varPessoa.ativa = pessoa.ativa;
-        }
+    async create(pessoa: Pessoa){
+        this.pessoaModel.create(pessoa);
     }
 
-    delete(id:number){
-        let index = this.Pessoas.findIndex(p => p.idpessoa == id);
+    async update(pessoa:Pessoa){
+        this.pessoaModel.update(pessoa, {
+            where: {
+                idpessoa: pessoa.idpessoa
+            }
+        });
+    }
 
-        if(index > -1)
-            this.Pessoas.splice(index,1);
+    async delete(id:number){
+        this.pessoaModel.destroy({
+            where:{
+                idpessoa: id
+            }
+        });
     }
 }
