@@ -2,6 +2,8 @@ import { Module } from '@nestjs/common';
 import { SequelizeModule } from '@nestjs/sequelize';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { PessoasModule } from './modules/pessoas/pessoas.module';
+import { ProdutoModule } from './modules/produto/produto.module';
 
 @Module({
   imports: [
@@ -14,6 +16,8 @@ import { AppService } from './app.service';
       database: 'postgres',
       models: [],
     }),
+    PessoasModule,
+    ProdutoModule
   ],
   controllers: [AppController],
   providers: [AppService],
