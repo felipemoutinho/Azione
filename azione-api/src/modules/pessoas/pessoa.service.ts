@@ -1,26 +1,23 @@
-import { Injectable } from '@nestjs/common';
-import { Pessoa } from './pessoa.model';
-import { PessoaEntity } from './pessoa.entity';
-import { InjectModel } from '@nestjs/sequelize';
-
+import { Injectable, Inject } from '@nestjs/common';
+import { Pessoa } from './pessoa.entity';
 
 @Injectable()
 export class PessoaService {
     
-    constructor(@InjectModel(PessoaEntity) private pessoaModel: typeof PessoaEntity){
+    constructor(@Inject('PESSOA_REPOSITORY') private pessoaRepository: typeof Pessoa){
 
     }
     
     async getAll(): Promise<Pessoa[]>{
-        return this.pessoaModel.findAll();
+        return this.pessoaRepository.findAll();
     }
 
     async getById(id: number): Promise<Pessoa>{
-        return this.pessoaModel.findByPk(id);
+        return this.pessoaRepository.findByPk(id);
     }
 
     async getAllActive(): Promise<Pessoa[]>{
-        return this.pessoaModel.findAll({
+        return this.pessoaRepository.findAll({
             where:{
                 ativa: true
             }
@@ -28,11 +25,11 @@ export class PessoaService {
     }
 
     async create(pessoa: Pessoa){
-        this.pessoaModel.create(pessoa);
+        this.pessoaRepository.create(pessoa);
     }
 
     async update(pessoa:Pessoa){
-        this.pessoaModel.update(pessoa, {
+        this.pessoaRepository.update(pessoa, {
             where: {
                 idpessoa: pessoa.idpessoa
             }
@@ -40,7 +37,7 @@ export class PessoaService {
     }
 
     async delete(id:number){
-        this.pessoaModel.destroy({
+        this.pessoaRepository.destroy({
             where:{
                 idpessoa: id
             }

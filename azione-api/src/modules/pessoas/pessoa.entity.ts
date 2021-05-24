@@ -1,5 +1,4 @@
 import { Table,Model, Column, DataType } from "sequelize-typescript";
-import { Pessoa } from "./pessoa.model";
 
 @Table({
     timestamps: true,
@@ -9,7 +8,7 @@ import { Pessoa } from "./pessoa.model";
     updatedAt: 'dataAlteracao',
     indexes: [{ unique: true, fields: ['idpessoa'] }],
 })
-export class PessoaEntity extends Model<Pessoa> {
+export class Pessoa extends Model<Pessoa> {
 
     @Column({
         allowNull: false,

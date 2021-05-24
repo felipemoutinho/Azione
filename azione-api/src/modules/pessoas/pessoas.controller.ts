@@ -1,13 +1,11 @@
 import { Body, Controller, Delete, Get, Param, Patch, Post } from '@nestjs/common';
-import { Pessoa } from './pessoa.model';
-import {PessoaEntity} from './pessoa.entity';
+import {Pessoa} from './pessoa.entity';
 import { PessoaService } from './pessoa.service';
 
 @Controller('pessoas')
 export class PessoasController {
     
     constructor(private pessoaService: PessoaService){
-        
     }
 
     @Get()
