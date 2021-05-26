@@ -1,4 +1,5 @@
 import { Sequelize } from "sequelize-typescript";
+import { PessoaContato } from "../pessoa-contato/pessoa-contato.entity";
 import { Pessoa } from "../pessoas/pessoa.entity";
 
 export const dataBaseProviders = [
@@ -13,7 +14,7 @@ export const dataBaseProviders = [
                 password: 'Aa123456',
                 database: 'postgres',
             });
-            sequelize.addModels([Pessoa]);
+            sequelize.addModels([Pessoa,PessoaContato]);
             await sequelize.sync();
             return sequelize;
         },

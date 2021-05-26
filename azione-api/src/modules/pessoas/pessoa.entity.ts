@@ -1,4 +1,5 @@
-import { Table,Model, Column, DataType } from "sequelize-typescript";
+import { Table,Model, Column, DataType, HasMany } from "sequelize-typescript";
+import { PessoaContato } from "../pessoa-contato/pessoa-contato.entity";
 
 @Table({
     timestamps: true,
@@ -40,4 +41,7 @@ export class Pessoa extends Model<Pessoa> {
         comment: 'Pessoa ativa = true, inativa = false'
     })
     ativa: boolean;
+
+    @HasMany(() => PessoaContato)
+    pessoaContato: PessoaContato[]
 }
