@@ -19,4 +19,32 @@ export class PessoaContatoService{
             }]
         });
     }
+
+    async getContatoByIdPessoa(idpessoa:number): Promise<PessoaContato[]>{
+        return (await this.pessoaContatoRepository.findAll({
+            where: {
+                idpessoa: idpessoa
+            }
+        }));
+    }
+
+    async createPessoaContato(dadosContato: PessoaContato): Promise<PessoaContato>{
+        return this.pessoaContatoRepository.create(dadosContato);
+    }
+
+    async updateContatoPessoa(dadosContato: PessoaContato): Promise<[number,PessoaContato[]]>{
+        return this.pessoaContatoRepository.update(dadosContato, {
+            where: {
+                idpessoacontato: dadosContato.idpessoacontato
+            }
+        });
+    }
+
+    async deleteContatoPessoa(idpessoacontato: number){
+        return this.pessoaContatoRepository.destroy({
+            where:{
+                idpessoacontato: idpessoacontato
+            }
+        });
+    }
 }
