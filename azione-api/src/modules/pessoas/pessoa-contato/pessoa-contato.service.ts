@@ -1,5 +1,5 @@
 import { Injectable, Inject } from "@nestjs/common";
-import { Pessoa } from "../pessoas/pessoa.entity";
+import { Pessoa } from "../pessoa.entity";
 import { PessoaContato } from "./pessoa-contato.entity";
 
 @Injectable()

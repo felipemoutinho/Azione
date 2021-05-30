@@ -1,5 +1,5 @@
 import { Table,Column, DataType, ForeignKey } from "sequelize-typescript";
-import { Pessoa } from "../pessoas/pessoa.entity";
+import { Pessoa } from "../pessoa.entity";
 
 @Table({
     timestamps: true,

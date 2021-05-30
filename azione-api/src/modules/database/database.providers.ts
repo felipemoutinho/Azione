@@ -1,5 +1,5 @@
 import { Sequelize } from "sequelize-typescript";
-import { PessoaContato } from "../pessoa-contato/pessoa-contato.entity";
+import { PessoaContato } from "../pessoas/pessoa-contato/pessoa-contato.entity";
 import { Pessoa } from "../pessoas/pessoa.entity";
 
 export const dataBaseProviders = [
