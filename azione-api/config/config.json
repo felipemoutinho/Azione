@@ -1,0 +1,26 @@
+{
+    "development": {
+        "username": "docker",
+        "password": "Aa123456",
+        "database": "postgres",
+        "port": 49153,
+        "host": "localhost",
+        "dialect": "postgres"
+    },
+    "test": {
+      "username": "docker",
+      "password": "Aa123456",
+      "database": "postgres",
+      "port": 49153,
+      "host": "localhost",
+      "dialect": "postgres"
+    },
+    "production": {
+        "username": "docker",
+        "password": "Aa123456",
+        "database": "postgres",
+        "port": 49153,
+        "host": "localhost",
+        "dialect": "postgres"
+    }
+  }
