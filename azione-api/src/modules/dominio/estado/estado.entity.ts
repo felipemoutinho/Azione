@@ -16,7 +16,7 @@ export class Estado extends Model<Estado> {
         autoIncrement: true,
         allowNull: false,
         field: 'idestado',
-        type: DataType.NUMBER
+        type: DataType.INTEGER
     })
     idestado: number;
     
@@ -36,9 +36,10 @@ export class Estado extends Model<Estado> {
     
     @ForeignKey(() => Pais)
     @Column({
-        allowNull: true,
+        allowNull: false,
         type: DataType.INTEGER,
-        field: 'idpais'
+        field: 'idpais',
+        defaultValue: 33
     })
     idpais: number;
     
