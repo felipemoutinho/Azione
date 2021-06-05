@@ -3,6 +3,7 @@ import { APP_FILTER } from '@nestjs/core';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { AllExceptionFilter } from './core/filters/exception-filter';
+import { PaisModule } from './modules/dominio/pais/pais.module';
 import { PessoaContatoModule } from './modules/pessoas/pessoa-contato/pessoa-contato.module';
 import { PessoasEnderecoModule } from './modules/pessoas/pessoa-endereco/pessoas-endereco.module';
 import { PessoasModule } from './modules/pessoas/pessoas.module';
@@ -13,7 +14,8 @@ import { ProdutoModule } from './modules/produto/produto.module';
     PessoasModule,
     ProdutoModule,
     PessoaContatoModule,
-    PessoasEnderecoModule
+    PessoasEnderecoModule,
+    PaisModule
   ],
   controllers: [AppController],
   providers: [AppService, {
