@@ -4,8 +4,8 @@ import { Estado } from '../estado/estado.entity';
 
 @Table({
     timestamps: true,
-    createdAt: 'dataInclusao',
-    updatedAt: 'dataAtualizacao',
+    createdAt: 'datainclusao',
+    updatedAt: 'dataatualizacao',
     schema: 'dominio',
     indexes: [{unique: true, fields: ['idpais']}],
     tableName: 'pais'
@@ -26,14 +26,14 @@ export class Pais extends Model<Pais>{
         allowNull: false,
         comment: 'Nome do país em Portugês'
     })
-    nomePais: string;
+    nomepais: string;
     
     @Column({
         type: DataType.STRING(60),
         allowNull: false,
         comment: 'Nome do país em Inglês'
     })
-    nomePaisIngles: string;
+    nomepaisingles: string;
 
     @HasMany(() => Estado,'idpais')
     estados: Estado[];

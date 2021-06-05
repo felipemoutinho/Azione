@@ -4,8 +4,8 @@ import { Pais } from '../pais/pais.entity';
 @Table({
     schema: 'dominio',
     timestamps: true,
-    createdAt: 'dataInclusao',
-    updatedAt: 'dataAlteracao',
+    createdAt: 'datainclusao',
+    updatedAt: 'dataalteracao',
     indexes: [{unique: true, fields: ['idestado', 'idpais']}],
     tableName: 'estados'
 })

@@ -10,6 +10,6 @@ export class EstadoController {
 
     @Get(':uf')
     async getEstadoByUf(@Param('uf') uf:string): Promise<Estado>{
-        return this.estadoService.getEstadoByUf(uf);
+        return this.estadoService.getEstadoByUf(uf.toUpperCase());
     }
 }

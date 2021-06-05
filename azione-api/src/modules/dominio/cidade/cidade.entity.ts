@@ -6,8 +6,8 @@ import { Pais } from "../pais/pais.entity";
     tableName: 'cidades',
     schema: 'dominio',
     timestamps: true,
-    createdAt: 'dataInclusao',
-    updatedAt: 'dataAlteracao',
+    createdAt: 'datainclusao',
+    updatedAt: 'dataalteracao',
     indexes: [{ unique: true, fields: [ 'idcidade', 'idestado', 'idpais' ] }]
 })
 
