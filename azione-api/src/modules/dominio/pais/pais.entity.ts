@@ -7,7 +7,8 @@ import { Estado } from '../estado/estado.entity';
     createdAt: 'dataInclusao',
     updatedAt: 'dataAtualizacao',
     schema: 'dominio',
-    indexes: [{unique: true, fields: ['idpais']}]
+    indexes: [{unique: true, fields: ['idpais']}],
+    tableName: 'pais'
 })
 export class Pais extends Model<Pais>{
 
