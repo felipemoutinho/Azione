@@ -3,6 +3,7 @@ import { Cidade } from "../dominio/cidade/cidade.entity";
 import { Estado } from "../dominio/estado/estado.entity";
 import { Pais } from "../dominio/pais/pais.entity";
 import { PessoaContato } from "../pessoas/pessoa-contato/pessoa-contato.entity";
+import { PessoaEndereco } from "../pessoas/pessoa-endereco/pessoa-endereco.entity";
 import { Pessoa } from "../pessoas/pessoa.entity";
 
 export const dataBaseProviders = [
@@ -17,7 +18,7 @@ export const dataBaseProviders = [
                 password: 'Aa123456',
                 database: 'postgres',
             });
-            sequelize.addModels([Pessoa,PessoaContato,Pais,Estado,Cidade]);
+            sequelize.addModels([Pessoa,PessoaContato,PessoaEndereco,Pais,Estado,Cidade]);
             await sequelize.sync();
             return sequelize;
         },
