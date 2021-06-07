@@ -4,7 +4,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { AllExceptionFilter } from './core/filters/exception-filter';
 import { DominioModule } from './modules/dominio/dominio.module';
-import { PaisModule } from './modules/dominio/pais/pais.module';
+import { DadosPessoaFisicaModule } from './modules/pessoas/dados-pessoa-fisica/dados-pessoa-fisica.module';
 import { PessoaContatoModule } from './modules/pessoas/pessoa-contato/pessoa-contato.module';
 import { PessoasEnderecoModule } from './modules/pessoas/pessoa-endereco/pessoas-endereco.module';
 import { PessoasModule } from './modules/pessoas/pessoas.module';
@@ -16,7 +16,8 @@ import { ProdutoModule } from './modules/produto/produto.module';
     ProdutoModule,
     PessoaContatoModule,
     PessoasEnderecoModule,
-    DominioModule
+    DominioModule,
+    DadosPessoaFisicaModule
   ],
   controllers: [AppController],
   providers: [AppService, {

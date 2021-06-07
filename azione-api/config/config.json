@@ -3,7 +3,7 @@
         "username": "docker",
         "password": "Aa123456",
         "database": "postgres",
-        "port": 49153,
+        "port": 49179,
         "host": "localhost",
         "dialect": "postgres"
     },
