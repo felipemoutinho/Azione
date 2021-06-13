@@ -10,4 +10,12 @@ export class DadosPessoaJuridicaService {
     async getAll(): Promise<DadosPessoaJuridica[]> {
         return this.pessoaJuridicaRepository.findAll();
     }
+
+    async getByIdPessoa(idpessoa: number): Promise<DadosPessoaJuridica> {
+        return this.pessoaJuridicaRepository.findOne({
+            where: {
+                idpessoa:idpessoa
+            }
+        });
+    }
 }
