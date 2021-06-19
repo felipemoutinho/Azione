@@ -1,6 +1,7 @@
 import { Table,Model, Column, DataType, ForeignKey, BelongsTo } from "sequelize-typescript";
 import { Cnae } from "src/modules/dominio/cnae/cnae.entity";
 import { Tributacao } from "src/modules/dominio/identificador-tributacao/identificador-tributacao.entity";
+import { IndicadorInscEstadual } from "src/modules/dominio/indicador-inscricao-estadual/indicador-insc-estadual.entity";
 import { Pessoa } from "../pessoa.entity";
 
 @Table({
@@ -69,11 +70,12 @@ export class DadosPessoaJuridica extends Model<DadosPessoaJuridica> {
     })
     suframa: string;
     
+    @ForeignKey(() => IndicadorInscEstadual)
     @Column({
         type: DataType.INTEGER,
-        field: 'indicador_inscricaoestadual'
+        field: 'idindicadorinsestadual'
     })
-    indicadorInscEstadual: number;
+    idincadorInscEstadual: number;
     
     @Column({
         type: DataType.STRING(25),
@@ -110,4 +112,7 @@ export class DadosPessoaJuridica extends Model<DadosPessoaJuridica> {
 
     @BelongsTo(() => Tributacao, 'idtributacao')
     tributacao: Tributacao;
+
+    @BelongsTo(() => IndicadorInscEstadual, 'idindicadorinsestadual')
+    indicadorInscEstadual: IndicadorInscEstadual
 }
