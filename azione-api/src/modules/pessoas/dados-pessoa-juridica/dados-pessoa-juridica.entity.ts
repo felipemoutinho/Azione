@@ -1,4 +1,6 @@
 import { Table,Model, Column, DataType, ForeignKey, BelongsTo } from "sequelize-typescript";
+import { Cnae } from "src/modules/dominio/cnae/cnae.entity";
+import { Tributacao } from "src/modules/dominio/identificador-tributacao/identificador-tributacao.entity";
 import { Pessoa } from "../pessoa.entity";
 
 @Table({
@@ -50,10 +52,11 @@ export class DadosPessoaJuridica extends Model<DadosPessoaJuridica> {
     
     @Column({
         type: DataType.STRING(20),
-        field: 'inscricaomunicipal'
+        field: 'inscricao_municipal'
     })
     inscricaoMunicipal: string;
     
+    @ForeignKey(() => Cnae)
     @Column({
         type: DataType.INTEGER,
         field: 'idcnae'
@@ -68,26 +71,28 @@ export class DadosPessoaJuridica extends Model<DadosPessoaJuridica> {
     
     @Column({
         type: DataType.INTEGER,
-        field: 'indicadorinscricaoestadual'
+        field: 'indicador_inscricaoestadual'
     })
     indicadorInscEstadual: number;
     
     @Column({
         type: DataType.STRING(25),
-        field: 'inscricaoestadual'
+        field: 'inscricao_estadual'
     })
     inscricaoEstadual: string;
     
+    @ForeignKey(() => Tributacao)
     @Column({
         type: DataType.INTEGER,
-        field: 'identificacao'
+        field: 'idtributacao',
+        comment: 'Tributação relacionada a empresa'
     })
-    identificacao: number;
+    idtributacao: number;
     
     @Column({
         type: DataType.DATE,
         allowNull: false,
-        field: 'datafundacao'
+        field: 'data_fundacao'
     })
     dataFundacao: Date;
     
@@ -99,4 +104,10 @@ export class DadosPessoaJuridica extends Model<DadosPessoaJuridica> {
 
     @BelongsTo(() => Pessoa)
     pessoa: Pessoa;
+
+    @BelongsTo(() => Cnae, 'idcnae')
+    cnae: Cnae;
+
+    @BelongsTo(() => Tributacao, 'idtributacao')
+    tributacao: Tributacao;
 }
