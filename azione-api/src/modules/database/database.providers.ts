@@ -1,5 +1,6 @@
 import { Sequelize } from "sequelize-typescript";
 import { Cidade } from "../dominio/cidade/cidade.entity";
+import { Cnae } from "../dominio/cnae/cnae.entity";
 import { Estado } from "../dominio/estado/estado.entity";
 import { Pais } from "../dominio/pais/pais.entity";
 import { DadosPessoaFisica } from "../pessoas/dados-pessoa-fisica/dados-pessoa-fisica.entity";
@@ -19,7 +20,7 @@ export const dataBaseProviders = [
                 password: 'Aa123456',
                 database: 'postgres',
             });
-            sequelize.addModels([Pessoa,PessoaContato,PessoaEndereco,DadosPessoaFisica,Pais,Estado,Cidade]);
+            sequelize.addModels([Pessoa,PessoaContato,PessoaEndereco,DadosPessoaFisica,Pais,Estado,Cidade,Cnae]);
             await sequelize.sync();
             return sequelize;
         },
