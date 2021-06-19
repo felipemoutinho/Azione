@@ -2,14 +2,14 @@ import { Table, Model, Column, DataType } from "sequelize-typescript";
 
 
 @Table({
-    tableName: 'indicador-inscricao-estadual',
+    tableName: 'indicador_inscricao_estadual',
     schema: 'dominio',
     timestamps: false,
     createdAt: false,
     updatedAt: false,
     indexes: [{
         unique: true,
-        fields: ['idindicadorinsestadual']
+        fields: ['idindicadorinscestadual']
     }]
 })
 export class IndicadorInscEstadual extends Model<IndicadorInscEstadual> {
@@ -19,7 +19,7 @@ export class IndicadorInscEstadual extends Model<IndicadorInscEstadual> {
         allowNull: false,
         type: DataType.INTEGER,
         autoIncrement: true,
-        field: 'idindicadorinsestadual'
+        field: 'idindicadorinscestadual'
     })
     idindicadorinscestadual: number;
     

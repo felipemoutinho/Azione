@@ -73,7 +73,7 @@ export class DadosPessoaJuridica extends Model<DadosPessoaJuridica> {
     @ForeignKey(() => IndicadorInscEstadual)
     @Column({
         type: DataType.INTEGER,
-        field: 'idindicadorinsestadual'
+        field: 'idindicadorinscestadual'
     })
     idincadorInscEstadual: number;
     
@@ -113,6 +113,6 @@ export class DadosPessoaJuridica extends Model<DadosPessoaJuridica> {
     @BelongsTo(() => Tributacao, 'idtributacao')
     tributacao: Tributacao;
 
-    @BelongsTo(() => IndicadorInscEstadual, 'idindicadorinsestadual')
+    @BelongsTo(() => IndicadorInscEstadual, 'idindicadorinscestadual')
     indicadorInscEstadual: IndicadorInscEstadual
 }

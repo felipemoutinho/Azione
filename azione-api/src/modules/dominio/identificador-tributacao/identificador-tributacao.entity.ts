@@ -1,7 +1,7 @@
 import { Table, Model, Column, DataType } from "sequelize-typescript";
 
 @Table({
-    tableName: 'identificador-tributacao',
+    tableName: 'identificador_tributacao',
     schema: 'dominio',
     timestamps: false,
     indexes: [{unique: true, fields: ['idtributacao']}],
