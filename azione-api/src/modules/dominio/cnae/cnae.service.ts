@@ -8,10 +8,17 @@ export class CnaeService {
     }
 
     async getCnaeByCodigo(codigoCnae: string): Promise<Cnae>{
+        
+        const codigoFormatado = codigoCnae.replace(/^(\d{4})(\d{1})(\d{2})/,"$1-$2/$3")
+        
         return this.cnaeRepository.findOne({
             where: {
-                codigocnae: codigoCnae
+                codigoCnae: codigoFormatado
             }
         });
+    }
+
+    async getAll(): Promise<Cnae[]>{
+        return this.cnaeRepository.findAll();
     }
 }

@@ -75,7 +75,7 @@ export class DadosPessoaJuridica extends Model<DadosPessoaJuridica> {
         type: DataType.INTEGER,
         field: 'idindicadorinscestadual'
     })
-    idincadorInscEstadual: number;
+    idindicadorInscEstadual: number;
     
     @Column({
         type: DataType.STRING(25),

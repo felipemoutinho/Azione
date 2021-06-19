@@ -13,4 +13,9 @@ export class CnaeController {
     async getCnaeByCodigo(@Param('codigoCnae') codigoCnae: string): Promise<Cnae>{
         return this.cnaeService.getCnaeByCodigo(codigoCnae);
     }
+
+    @Get()
+    async getAll():Promise<Cnae[]> {
+        return this.cnaeService.getAll();
+    }
 }
