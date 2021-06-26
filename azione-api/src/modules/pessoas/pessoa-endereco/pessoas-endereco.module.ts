@@ -8,7 +8,8 @@ import { pessoaEnderecoProvider } from "./pessoas-endereco.providers";
 @Module({
     controllers: [PessoaEnderecoController],
     providers:[PessoaEnderecoService,...pessoaEnderecoProvider],
-    imports: [DataBaseModule]
+    imports: [DataBaseModule],
+    exports: [PessoaEnderecoService]
 })
 export class PessoasEnderecoModule{
 

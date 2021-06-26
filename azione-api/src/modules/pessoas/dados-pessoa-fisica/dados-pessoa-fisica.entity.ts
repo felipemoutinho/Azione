@@ -1,4 +1,5 @@
 import { Column, DataType, ForeignKey, Model, Table,BelongsTo } from "sequelize-typescript";
+import { IndicadorInscEstadual } from "src/modules/dominio/indicador-inscricao-estadual/indicador-insc-estadual.entity";
 import { Pessoa } from "../pessoa.entity";
 
 @Table({
@@ -79,6 +80,22 @@ export class DadosPessoaFisica extends Model<DadosPessoaFisica>{
     })
     nomemae: string;
 
+    @ForeignKey(() => IndicadorInscEstadual)
+    @Column({
+        type: DataType.INTEGER,
+        field: 'idindicadorinscestadual'
+    })
+    idindicadorInscEstadual: number;
+    
+    @Column({
+        type: DataType.STRING(25),
+        field: 'inscricao_estadual'
+    })
+    inscricaoEstadual: string;
+
     @BelongsTo(() => Pessoa)
     pessoa: Pessoa;
+
+    @BelongsTo(() => IndicadorInscEstadual)
+    indicadorInscEstadual: IndicadorInscEstadual
 }

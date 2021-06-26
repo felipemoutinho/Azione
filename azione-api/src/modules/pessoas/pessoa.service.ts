@@ -24,8 +24,8 @@ export class PessoaService {
         });
     }
 
-    async create(pessoa: Pessoa){
-        this.pessoaRepository.create(pessoa);
+    async create(pessoa: Pessoa):Promise<Pessoa>{
+        return this.pessoaRepository.create(pessoa);
     }
 
     async update(pessoa:Pessoa){

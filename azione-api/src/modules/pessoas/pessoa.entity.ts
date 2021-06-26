@@ -1,4 +1,5 @@
 import { Table,Model, Column, DataType, HasMany, HasOne } from "sequelize-typescript";
+import { Cliente } from "../clientes/clientes.entity";
 import { DadosPessoaFisica } from "./dados-pessoa-fisica/dados-pessoa-fisica.entity";
 import { DadosPessoaJuridica } from "./dados-pessoa-juridica/dados-pessoa-juridica.entity";
 import { PessoaContato } from "./pessoa-contato/pessoa-contato.entity";
@@ -56,4 +57,7 @@ export class Pessoa extends Model<Pessoa> {
 
     @HasOne(() => DadosPessoaJuridica)
     pessoaJuridica: DadosPessoaJuridica;
+
+    @HasOne(() => Cliente)
+    cliente: Cliente;
 }

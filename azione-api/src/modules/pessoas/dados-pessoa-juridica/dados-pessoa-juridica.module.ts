@@ -7,7 +7,8 @@ import { DadosPessoaJuridicaService } from "./dados-pessoa-juridica.service";
 @Module({
     controllers: [DadosPessoaJuridicaController],
     providers: [DadosPessoaJuridicaService,...dadosPessoaJuridicaProvider],
-    imports: [DataBaseModule]
+    imports: [DataBaseModule],
+    exports: [DadosPessoaJuridicaService]
 })
 export class DadosPessoaJuridicaModule {
 

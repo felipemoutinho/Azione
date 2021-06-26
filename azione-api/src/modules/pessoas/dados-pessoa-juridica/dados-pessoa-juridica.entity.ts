@@ -113,6 +113,6 @@ export class DadosPessoaJuridica extends Model<DadosPessoaJuridica> {
     @BelongsTo(() => Tributacao, 'idtributacao')
     tributacao: Tributacao;
 
-    @BelongsTo(() => IndicadorInscEstadual, 'idindicadorinscestadual')
+    @BelongsTo(() => IndicadorInscEstadual)
     indicadorInscEstadual: IndicadorInscEstadual
 }

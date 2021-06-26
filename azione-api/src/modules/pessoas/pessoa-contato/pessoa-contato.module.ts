@@ -7,6 +7,9 @@ import { pessoaContatoProviders } from './pessoas-contato.providers';
 @Module({
     controllers: [PessoasContatoController],
     providers: [PessoaContatoService,...pessoaContatoProviders],
-    imports: [DataBaseModule]
+    imports: [DataBaseModule],
+    exports: [PessoaContatoService]
 })
-export class PessoaContatoModule{}
+export class PessoaContatoModule{
+    
+}

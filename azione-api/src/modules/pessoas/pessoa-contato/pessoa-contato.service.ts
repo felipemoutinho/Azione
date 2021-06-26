@@ -4,6 +4,7 @@ import { PessoaContato } from "./pessoa-contato.entity";
 
 @Injectable()
 export class PessoaContatoService{
+    
     constructor(@Inject('PESSOA_CONTATO_REPOSITORY') private pessoaContatoRepository: typeof PessoaContato){
 
     }

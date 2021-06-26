@@ -1,7 +1,5 @@
 import { Table,Model,Column,DataType, ForeignKey, BelongsTo } from "sequelize-typescript";
 import { Pessoa } from "../pessoa.entity";
-import { DadosPessoaContato } from "./pessoa-contato.model";
-
 @Table({
     timestamps: true,
     schema: 'base',
@@ -10,7 +8,7 @@ import { DadosPessoaContato } from "./pessoa-contato.model";
     updatedAt: 'dataAlteracao',
     indexes: [{ unique: true, fields: ['idpessoacontato','idpessoa','idtipocontato'] }],
 })
-export class PessoaContato extends Model<DadosPessoaContato>{
+export class PessoaContato extends Model<PessoaContato>{
     
     @Column({
         allowNull: false,
