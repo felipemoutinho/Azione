@@ -1,5 +1,5 @@
 import { Module } from "@nestjs/common";
-import { DataBaseModule } from "src/modules/database/database.module";
+import { DataBaseModule } from "src/core/database/database.module";
 import { EstadoController } from "./estado.controller";
 import { estadoProvider } from "./estado.providers";
 import { EstadoService } from "./estado.service";

@@ -1,5 +1,5 @@
 import { Module } from "@nestjs/common";
-import { DataBaseModule } from "src/modules/database/database.module";
+import { DataBaseModule } from "src/core/database/database.module";
 import { TributacaoController } from "./identificador-tributacao.controller";
 import { tributacaoProvider } from "./identificador-tributacao.provider";
 import { TributacaoService } from "./identificador-tributacao.service";
