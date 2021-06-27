@@ -1,5 +1,6 @@
 import { Sequelize } from "sequelize-typescript";
 import { Cliente } from "src/modules/clientes/clientes.entity";
+import { Usuario } from "src/modules/usuarios/usuarios.entity";
 import { Cidade } from "../../modules/dominio/cidade/cidade.entity";
 import { Cnae } from "../../modules/dominio/cnae/cnae.entity";
 import { Estado } from "../../modules/dominio/estado/estado.entity";
@@ -28,6 +29,7 @@ export const dataBaseProviders = [
                 Pessoa,
                 PessoaContato,
                 PessoaEndereco,
+                Usuario,
                 DadosPessoaFisica,
                 DadosPessoaJuridica,
                 Cliente,
