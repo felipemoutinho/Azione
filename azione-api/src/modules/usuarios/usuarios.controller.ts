@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post } from "@nestjs/common";
+import { Body, Controller, Get, HttpException, HttpStatus, Param, Post } from "@nestjs/common";
 import { Usuario } from "./usuarios.entity";
 import { UsuarioService } from "./usuarios.service";
 
@@ -15,6 +15,24 @@ export class UsuarioController {
 
     @Post()
     async create(@Body() dadosUsuario: Usuario){
-        return this.usuarioService.create(dadosUsuario);
+        
+        const exiteUsuario = await this.usuarioService.getByLogin(dadosUsuario.login);
+
+        if(exiteUsuario){
+            throw new HttpException('Já existe um usuário cadastrado com este login', HttpStatus.NOT_ACCEPTABLE);
+        }
+        else{
+            const usuario = await this.usuarioService.create(dadosUsuario);
+
+            if(usuario)
+            {
+                const {login, idpessoa} = usuario;
+    
+                return {login, idpessoa};
+            }
+            else{
+                throw new HttpException('Houve uma falha em criar novo usuário', HttpStatus.INTERNAL_SERVER_ERROR); 
+            }
+        }
     }
 }
