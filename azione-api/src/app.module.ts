@@ -1,8 +1,9 @@
 import { Module } from '@nestjs/common';
-import { APP_FILTER } from '@nestjs/core';
+import { APP_FILTER, APP_GUARD } from '@nestjs/core';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { AllExceptionFilter } from './core/filters/exception-filter';
+import { JwtAuthGuard } from './core/guards/jwt-auth.guard';
 import { AuthModule } from './modules/auth/auth.module';
 import { ClientesModule } from './modules/clientes/clientes.module';
 import { DominioModule } from './modules/dominio/dominio.module';
@@ -20,9 +21,16 @@ import { UsuarioModule } from './modules/usuarios/usuarios.module';
     AuthModule
   ],
   controllers: [AppController],
-  providers: [AppService, {
-    provide: APP_FILTER,
-    useClass: AllExceptionFilter
-  }],
+  providers: [AppService, 
+    {
+      provide: APP_FILTER,
+      useClass: AllExceptionFilter
+    },
+    {
+      provide: APP_GUARD,
+      useClass: JwtAuthGuard
+    },
+
+  ],
 })
 export class AppModule {}

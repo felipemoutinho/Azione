@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post } from "@nestjs/common";
+import { Body, Controller, Get, Post, UseGuards } from "@nestjs/common";
 import { DadosPessoaFisicaService } from "../pessoas/dados-pessoa-fisica/dados-pessoa-fisica.service";
 import { DadosPessoaJuridicaService } from "../pessoas/dados-pessoa-juridica/dados-pessoa-juridica.service";
 import { PessoaContatoService } from "../pessoas/pessoa-contato/pessoa-contato.service";
@@ -20,7 +20,7 @@ export class ClientesController {
         ){
 
     }
-
+    
     @Get()
     async getAll(): Promise<Cliente[]>{
         return this.clientesService.getAll();
