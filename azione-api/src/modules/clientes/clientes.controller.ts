@@ -1,4 +1,5 @@
 import { Body, Controller, Get, Post, UseGuards } from "@nestjs/common";
+import { JwtAuthGuard } from "src/core/guards/jwt-auth.guard";
 import { DadosPessoaFisicaService } from "../pessoas/dados-pessoa-fisica/dados-pessoa-fisica.service";
 import { DadosPessoaJuridicaService } from "../pessoas/dados-pessoa-juridica/dados-pessoa-juridica.service";
 import { PessoaContatoService } from "../pessoas/pessoa-contato/pessoa-contato.service";
@@ -21,11 +22,13 @@ export class ClientesController {
 
     }
     
+    @UseGuards(JwtAuthGuard)
     @Get()
     async getAll(): Promise<Cliente[]>{
         return this.clientesService.getAll();
     }
 
+    @UseGuards(JwtAuthGuard)
     @Post('cliente-pf')
     async createClientePf(@Body() dadosClientePF: DadosClientePF){
         const pessoa  = this.pessoaService.create(dadosClientePF.pessoa);
@@ -60,6 +63,7 @@ export class ClientesController {
         }
     }
 
+    @UseGuards(JwtAuthGuard)
     @Post('cliente-pj')
     async createClientePj(@Body() dadosClientePJ: DadosClientePJ){
         const pessoa  = this.pessoaService.create(dadosClientePJ.pessoa);

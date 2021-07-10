@@ -1,4 +1,5 @@
-import { Body, Controller, Get, HttpException, HttpStatus, Param, Post } from "@nestjs/common";
+import { Body, Controller, Get, HttpException, HttpStatus, Param, Post, UseGuards } from "@nestjs/common";
+import { JwtAuthGuard } from "src/core/guards/jwt-auth.guard";
 import { Usuario } from "./usuarios.entity";
 import { UsuarioService } from "./usuarios.service";
 
@@ -8,11 +9,13 @@ export class UsuarioController {
 
     }
 
+    @UseGuards(JwtAuthGuard)
     @Get(':login')
     async getByLogin(@Param('login') login: string): Promise<Usuario>{
         return this.usuarioService.getByLogin(login);
     }
 
+    @UseGuards(JwtAuthGuard)
     @Post()
     async create(@Body() dadosUsuario: Usuario){
         

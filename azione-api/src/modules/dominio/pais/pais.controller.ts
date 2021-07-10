@@ -1,4 +1,5 @@
-import { Controller, Get, Param } from "@nestjs/common";
+import { Controller, Get, Param, UseGuards } from "@nestjs/common";
+import { JwtAuthGuard } from "src/core/guards/jwt-auth.guard";
 import { Pais } from "./pais.entity";
 import { PaisService } from "./pais.service";
 
@@ -8,6 +9,7 @@ export class PaisController {
 
     }
 
+    @UseGuards(JwtAuthGuard)
     @Get(':idpais')
     async getPaisById(@Param('idpais') idpais: number): Promise<Pais>{
         return this.paisService.getById(idpais);

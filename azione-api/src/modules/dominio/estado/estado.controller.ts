@@ -1,4 +1,5 @@
-import { Controller, Get, Param } from "@nestjs/common";
+import { Controller, Get, Param, UseGuards } from "@nestjs/common";
+import { JwtAuthGuard } from "src/core/guards/jwt-auth.guard";
 import { Estado } from "./estado.entity";
 import { EstadoService } from "./estado.service";
 
@@ -8,6 +9,7 @@ export class EstadoController {
 
     }
 
+    @UseGuards(JwtAuthGuard)
     @Get(':uf')
     async getEstadoByUf(@Param('uf') uf:string): Promise<Estado>{
         return this.estadoService.getEstadoByUf(uf.toUpperCase());

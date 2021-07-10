@@ -26,11 +26,6 @@ import { UsuarioModule } from './modules/usuarios/usuarios.module';
       provide: APP_FILTER,
       useClass: AllExceptionFilter
     },
-    {
-      provide: APP_GUARD,
-      useClass: JwtAuthGuard
-    },
-
   ],
 })
 export class AppModule {}
