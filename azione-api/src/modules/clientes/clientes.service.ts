@@ -1,6 +1,6 @@
 import { Inject, Injectable } from "@nestjs/common";
+import { Pessoa } from "../pessoas/pessoa.entity";
 import { Cliente } from "./clientes.entity";
-import { DadosClientePF } from "./clientes.model";
 
 @Injectable()
 export class ClientesService {
@@ -9,7 +9,12 @@ export class ClientesService {
     }
 
     async getAll():Promise<Cliente[]>{
-        return this.clientesRepository.findAll();
+        return this.clientesRepository.findAll({
+            include: [{
+                model: Pessoa,
+                attributes: ['codigopessoa','nome']
+            }]
+        });
     }
 
     async getByIdPessoa(idpessoa: number): Promise<Cliente>{
