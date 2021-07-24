@@ -72,10 +72,10 @@ export class ClientesController {
     @UseGuards(JwtAuthGuard)
     @Post('cliente-pj')
     async createClientePj(@Body() dadosClientePJ: DadosClientePJ){
-        const pessoa  = this.pessoaService.create(dadosClientePJ.pessoa);
+        const pessoa = await this.pessoaService.create(dadosClientePJ.pessoa);
         
         if(pessoa){
-            const idpessoa = (await pessoa).idpessoa;
+            const idpessoa = pessoa.idpessoa;
             
             if(dadosClientePJ.contatos && dadosClientePJ.contatos.length > 0){
                 
