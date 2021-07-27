@@ -39,4 +39,14 @@ export class Usuario extends Model<Usuario> {
         type: DataType.STRING
     })
     senha: string;
+
+    @Column({
+        allowNull: false,
+        field: 'guid',
+        type: DataType.UUIDV4,
+        defaultValue: DataType.UUIDV4,
+        unique: true,
+        comment: 'Código identificador universal único para usuário',
+    })
+    guid: string;
 }
