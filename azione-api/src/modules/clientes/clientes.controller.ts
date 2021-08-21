@@ -65,7 +65,7 @@ export class ClientesController {
     async createClientePf(@Body() dadosClientePF: DadosClientePF) {
         try{
             const pessoa = this.pessoaService.create(dadosClientePF.pessoa);
-
+            console.log(dadosClientePF);
             if (pessoa) {
                 const idpessoa = (await pessoa).idpessoa;
     
