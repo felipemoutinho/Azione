@@ -15,9 +15,4 @@ export class AppController {
     return this.authService.login(req.user);
   }
 
-  @Get('auth/teste')
-  async teste(){
-    return 'Subscribe é meu ovo coisa chata do caralho'
-  }
-
 }
